@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "863813149883",
+    "project_id": "shoplen2002",
+    "storage_bucket": "shoplen2002.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:863813149883:android:92bf2c24ea4ae166c0b59e",
+        "android_client_info": {
+          "package_name": "com.example.shoplen2002"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOZcG3qgSd96B63XnOTw5c0eY66SrKSmY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
