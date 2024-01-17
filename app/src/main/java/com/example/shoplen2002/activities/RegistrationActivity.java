@@ -1,4 +1,4 @@
-package com.example.shoplen2002;
+package com.example.shoplen2002.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shoplen2002.R;
 import com.example.shoplen2002.models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -51,7 +52,7 @@ public class RegistrationActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
-                startActivity(new Intent(RegistrationActivity.this,LoginActivity.class));
+                startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
             }
         });
 
