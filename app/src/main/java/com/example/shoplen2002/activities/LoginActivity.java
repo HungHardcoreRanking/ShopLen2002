@@ -1,8 +1,5 @@
 package com.example.shoplen2002.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,11 +10,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.shoplen2002.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -62,37 +64,36 @@ public class LoginActivity extends AppCompatActivity {
         String userEmail = email.getText().toString();
         String userPassword = password.getText().toString();
 
-
-        if(TextUtils.isEmpty(userEmail)){
-            Toast.makeText(this,"Email is Empty!",Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(userEmail)) {
+            Toast.makeText(this, "Email is Empty!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if(TextUtils.isEmpty(userPassword)){
-            Toast.makeText(this,"Password is Empty!",Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(userPassword)) {
+            Toast.makeText(this, "Password is Empty!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if(userPassword.length()<6){
-            Toast.makeText(this,"Password Length must be greater then 6 letter",Toast.LENGTH_SHORT).show();
+        if (userPassword.length() < 6) {
+            Toast.makeText(this, "Password Length must be greater than 6 letters", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        //Login User
+        // Login User
         auth.signInWithEmailAndPassword(userEmail, userPassword)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             progressBar.setVisibility(View.GONE);
-                            Toast.makeText(LoginActivity.this,"Login Successfully",Toast.LENGTH_SHORT).show();
-                        }
-                        else {
+                            Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                            String userUid = auth.getCurrentUser().getUid();
+                            DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference().child("carts").child(userUid);
+                        } else {
                             progressBar.setVisibility(View.GONE);
-                            Toast.makeText(LoginActivity.this, "Error" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
     }
 }
