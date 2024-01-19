@@ -1,6 +1,7 @@
 package com.example.shoplen2002.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.shoplen2002.R;
+import com.example.shoplen2002.activities.ViewAllActivity;
 import com.example.shoplen2002.models.HomeCategories;
 
 import java.util.List;
@@ -35,6 +37,15 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull HomeAdapter.ViewHolder holder, int position) {
         Glide.with(context).load(categoriesList.get(position).getImg_url()).into(holder.catImg);
         holder.name.setText(categoriesList.get(position).getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ViewAllActivity.class);
+                intent.putExtra("type",categoriesList.get(position).getType());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
