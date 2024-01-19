@@ -4,9 +4,35 @@ public class UserModel {
     String name;
     String email;
     String password;
-
+    String profileImg;
+    String PhoneNumber;
+    String address;
     public UserModel(){
 
+    }
+
+    public String getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public void setPhoneNumber(String PhoneNumber) {
+        this.PhoneNumber = PhoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getProfileImg() {
+        return profileImg;
+    }
+
+    public void setProfileImg(String profileImg) {
+        this.profileImg = profileImg;
     }
 
     public UserModel(String name, String email, String password) {
