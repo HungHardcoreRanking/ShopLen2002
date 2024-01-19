@@ -1,12 +1,15 @@
 package com.example.shoplen2002.models;
-public class ViewAllModels {
+
+import java.io.Serializable;
+
+public class ViewAllModels implements Serializable {
     String name;
     String price;
     String description;
     String img_url;
     String type;
     String rating;
-
+    int total;
     public ViewAllModels() {
     }
 
@@ -17,6 +20,7 @@ public class ViewAllModels {
         this.img_url = img_url;
         this.type = type;
         this.rating = rating;
+        this.total = total;
     }
 
     public String getName() {
@@ -65,5 +69,11 @@ public class ViewAllModels {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+    public int getTotal(){
+        return total;
+    }
+    public void setTotal(int total){
+        this.total = total;
     }
 }

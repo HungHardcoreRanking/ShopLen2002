@@ -1,6 +1,7 @@
 package com.example.shoplen2002.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.shoplen2002.R;
+import com.example.shoplen2002.activities.DetailedActivity;
 import com.example.shoplen2002.models.ViewAllModels;
 
 import java.util.List;
@@ -38,7 +40,18 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.ViewHold
     holder.description.setText(list.get(position).getDescription());
     holder.price.setText(list.get(position).getPrice());
     holder.rating.setText(list.get(position).getRating());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailedActivity.class);
+                intent.putExtra("detail", list.get(position));
+                context.startActivity(intent);
+
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
